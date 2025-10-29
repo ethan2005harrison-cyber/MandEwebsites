@@ -9,15 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0C0C0C; --surface:#121212; --elev:#181818;
-      --text:#F2F2F0; --muted:#A7A7A7; --border:#262626;
-      --radius:16px; --ring:rgba(242,242,240,.35);
-    }
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+    :root{ --bg:#0C0C0C; --surface:#121212; --elev:#181818; --text:#F2F2F0; --muted:#A7A7A7; --border:#262626; --radius:16px; --ring:rgba(242,242,240,.35); }
+    *,*::before,*::after{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none} img{max-width:100%;display:block}
     .container{max-width:1120px;margin:0 auto;padding:0 20px}
     header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(12,12,12,.9),rgba(12,12,12,.55));backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
@@ -46,12 +40,11 @@
   <header>
     <div class="container">
       <nav>
-        <a class="brand" href="home.html" aria-label="M&E Websites">
-          <img src="assets/ME_full_lockup_transparent.png" alt="M&E Websites logo">
+        <a class="brand" href="index.html" aria-label="M&E Websites">
+          <img src="assets/logo.png" alt="M&E Websites logo">
         </a>
         <div style="display:flex;gap:10px">
           <a class="btn" href="#work">Work</a>
-          <!-- now links to a separate page -->
           <a class="btn btn-primary" href="query.html">Submit a query</a>
         </div>
       </nav>
@@ -95,8 +88,6 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
