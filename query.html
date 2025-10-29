@@ -9,18 +9,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0C0C0C; --surface:#121212; --elev:#181818;
-      --text:#F2F2F0; --muted:#A7A7A7; --border:#262626;
-      --radius:16px; --ring:rgba(242,242,240,.35);
-    }
+    :root{ --bg:#0C0C0C; --surface:#121212; --elev:#181818; --text:#F2F2F0; --muted:#A7A7A7; --border:#262626; --radius:16px; --ring:rgba(242,242,240,.35); }
     *,*::before,*::after{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6}
     a{color:inherit;text-decoration:none} img{max-width:100%;display:block}
     .container{max-width:720px;margin:0 auto;padding:0 20px}
     header{border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(12,12,12,.9),rgba(12,12,12,.55));backdrop-filter:blur(8px);position:sticky;top:0;z-index:50}
     nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:10px}
     .brand img{height:32px;width:auto}
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--text);font-weight:600}
     .btn:hover{background:var(--elev)}
@@ -31,15 +26,11 @@
     form{display:grid;gap:14px}
     .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     label{font-weight:600;font-size:14px}
-    input, textarea, select{
-      width:100%;padding:12px 14px;border-radius:12px;background:#0f0f0f;color:var(--text);border:1px solid var(--border);
-      transition:border-color .15s,box-shadow .15s,background .15s
-    }
+    input, textarea, select{width:100%;padding:12px 14px;border-radius:12px;background:#0f0f0f;color:var(--text);border:1px solid var(--border);transition:border-color .15s,box-shadow .15s,background .15s}
     input::placeholder,textarea::placeholder{color:#8b8b8b}
     input:focus,textarea:focus,select:focus{outline:none;border-color:#3a3a3a;box-shadow:0 0 0 4px var(--ring)}
     textarea{min-height:120px;resize:vertical}
     .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    .btn-primary{background:var(--surface)}
     footer{border-top:1px solid var(--border);padding:26px 0;color:var(--muted)}
     @media (max-width:720px){.row{grid-template-columns:1fr}}
   </style>
@@ -48,10 +39,10 @@
   <header>
     <div class="container">
       <nav>
-        <a class="brand" href="home.html" aria-label="M&E Websites">
-          <img src="assets/ME_monogram_transparent.png" alt="M&E logo">
+        <a class="brand" href="index.html" aria-label="M&E Websites">
+          <img src="assets/logo.png" alt="M&E Websites logo">
         </a>
-        <a class="btn" href="home.html">Back to home</a>
+        <a class="btn" href="index.html">Back to home</a>
       </nav>
     </div>
   </header>
@@ -98,6 +89,7 @@
 
           <input type="hidden" name="_subject" value="New query — M&E Websites">
           <div class="actions">
+            <button class="btn" type="button" onclick="history.back()">Cancel</button>
             <button class="btn btn-primary" type="submit">Send query</button>
             <span class="muted">We’ll never share your details.</span>
           </div>
@@ -113,8 +105,6 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
