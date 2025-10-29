@@ -13,18 +13,13 @@
 
   <style>
     :root{
-      /* Obsidian base */
-      --bg:#0C0C0C;
-      --surface:#121212;
-      --elev:#181818;
-
-      /* Text: match logo colour everywhere */
-      --text:#F2F2F0;     /* off-white like your logo */
-      --muted:#F2F2F0;    /* no grey—use off-white too */
-
+      --bg:#0C0C0C; --surface:#121212; --elev:#181818;
+      /* exact off-white sampled from your logo */
+      --text:#EAE4D6; 
+      --muted:#EAE4D6; 
       --border:#262626;
       --radius:16px;
-      --ring:rgba(242,242,240,.35);
+      --ring: rgba(234,228,214,.35);
     }
 
     *,*::before,*::after{box-sizing:border-box}
@@ -46,7 +41,8 @@
     }
     nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
     .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:36px;width:auto}
+    .brand img{height:56px;width:auto}              /* larger logo */
+    @media (max-width:640px){ .brand img{height:44px} } /* scale down on small screens */
 
     /* Buttons */
     .btn{
@@ -128,8 +124,7 @@
             </iframe>
           </div>
           <div style="margin-top:8px">
-            Live preview of your recent project — 
-            <a href="https://ethan2005harrison-cyber.github.io/erins-elegance-0.45/index.html" target="_blank" rel="noopener">open full site</a>
+            Live preview of our most recent website project, "erin's elegance"
           </div>
         </div>
       </div>
