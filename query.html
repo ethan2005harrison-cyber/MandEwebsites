@@ -11,8 +11,7 @@
   <style>
     :root{
       --bg:#0C0C0C; --surface:#121212; --elev:#181818;
-      --text:#EAE4D6;        /* exact off-white from logo */
-      --muted:#EAE4D6;       /* keep everything the same tone */
+      --text:#EAE4D6; --muted:#EAE4D6;
       --border:#262626; --radius:16px;
       --ring:rgba(234,228,214,.35);
     }
@@ -33,8 +32,8 @@
       backdrop-filter:blur(8px); position:sticky; top:0; z-index:50;
     }
     nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
-    .brand img{height:56px;width:auto}                 /* larger logo */
-    @media (max-width:640px){ .brand img{height:44px} } /* scale on mobile */
+    .brand img{height:56px;width:auto}
+    @media (max-width:640px){ .brand img{height:44px} }
 
     /* Buttons */
     .btn{
@@ -99,8 +98,8 @@
         <form method="POST" action="https://formspree.io/f/your-id">
           <div class="row">
             <div>
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required>
+              <label for="business_name">Business name</label>
+              <input id="business_name" name="business_name" type="text" placeholder="Your business name" required>
             </div>
             <div>
               <label for="email">Email</label>
@@ -119,14 +118,15 @@
                 <option value="" disabled selected>Select one</option>
                 <option>Email</option>
                 <option>Phone</option>
-                <option>WhatsApp</option>
+                <!-- WhatsApp removed as requested -->
               </select>
             </div>
           </div>
 
           <div>
-            <label for="message">Project notes (optional)</label>
-            <textarea id="message" name="message" placeholder="Tell us what you need or link example sites you like."></textarea>
+            <label for="message">Project notes (include type of business, goals, examples, etc)</label>
+            <textarea id="message" name="message" required
+              placeholder="Tell us what you need (type of business, goals, example sites, deadline, budget range)."></textarea>
           </div>
 
           <input type="hidden" name="_subject" value="New query — M&E Websites">
