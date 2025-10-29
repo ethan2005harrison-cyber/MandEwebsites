@@ -94,8 +94,8 @@
       <p class="muted">Pop in your details and we’ll get back to you within 24 hours.</p>
 
       <div class="card">
-        <!-- Replace 'your-id' with your Formspree (or other) endpoint -->
-        <form method="POST" action="https://formspree.io/f/your-id">
+        <!-- Formspree hooked up + redirect to thanks.html -->
+        <form method="POST" action="https://formspree.io/f/xeopgkbo">
           <div class="row">
             <div>
               <label for="business_name">Business name</label>
@@ -118,7 +118,6 @@
                 <option value="" disabled selected>Select one</option>
                 <option>Email</option>
                 <option>Phone</option>
-                <!-- WhatsApp removed as requested -->
               </select>
             </div>
           </div>
@@ -129,7 +128,12 @@
               placeholder="Tell us what you need (type of business, goals, example sites, deadline, budget range)."></textarea>
           </div>
 
+          <!-- Email subject line for Formspree -->
           <input type="hidden" name="_subject" value="New query — M&E Websites">
+          <!-- Redirect after success -->
+          <input type="hidden" name="_redirect" value="thanks.html">
+          <!-- Simple spam honeypot (humans won’t fill this) -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
           <div class="actions">
             <button class="btn" type="button" onclick="history.back()">Cancel</button>
