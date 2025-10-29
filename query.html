@@ -25,7 +25,6 @@
     img{max-width:100%;display:block}
     .container{max-width:720px;margin:0 auto;padding:0 20px}
 
-    /* Header */
     header{
       border-bottom:1px solid var(--border);
       background:linear-gradient(180deg,rgba(12,12,12,.9),rgba(12,12,12,.55));
@@ -35,13 +34,12 @@
     .brand img{height:56px;width:auto}
     @media (max-width:640px){ .brand img{height:44px} }
 
-    /* Buttons */
     .btn{
       display:inline-flex;align-items:center;justify-content:center;
       padding:10px 16px;border-radius:999px;border:1px solid var(--border);
       background:transparent;color:var(--text);font-weight:600;
       transition:transform .15s, background .15s, box-shadow .15s, border-color .15s;
-      cursor:pointer; /* make it feel clickable */
+      cursor:pointer;
     }
     .btn:hover{background:var(--elev);transform:translateY(-1px)}
     .btn:focus-visible{outline:none;box-shadow:0 0 0 4px var(--ring)}
@@ -56,7 +54,7 @@
 
     .card{
       background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;
-      position:relative; z-index:1; /* make sure nothing overlays */
+      position:relative; z-index:1;
     }
     form{display:grid;gap:14px; position:relative; z-index:1;}
     .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -72,11 +70,9 @@
       outline:none; border-color:#3a3a3a; box-shadow:0 0 0 4px var(--ring);
     }
     textarea{min-height:120px; resize:vertical}
-    .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap; position:relative; z-index:1;}
-
-    /* Footer */
+    .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .note{font-size:13px; opacity:.9}
     footer{border-top:1px solid var(--border);padding:26px 0;color:var(--text)}
-
     @media (max-width:720px){ .row{grid-template-columns:1fr} }
   </style>
 </head>
@@ -98,8 +94,8 @@
       <p class="muted">Pop in your details and we’ll get back to you within 24 hours.</p>
 
       <div class="card">
-        <!-- Formspree + redirect -->
-        <form method="POST" action="https://formspree.io/f/xeopgkbo">
+        <!-- Formspree with JS-redirect on success -->
+        <form id="query-form" method="POST" action="https://formspree.io/f/xeopgkbo">
           <div class="row">
             <div>
               <label for="business_name">Business name</label>
@@ -132,14 +128,15 @@
               placeholder="Tell us what you need (type of business, goals, example sites, deadline, budget range)."></textarea>
           </div>
 
-          <!-- Formspree helper fields -->
+          <!-- Helper fields -->
           <input type="hidden" name="_subject" value="New query — M&E Websites">
-          <input type="hidden" name="_redirect" value="thanks.html">
+          <input type="hidden" name="_accept" value="application/json">
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
           <div class="actions">
             <button class="btn" type="button" onclick="history.back()">Cancel</button>
-            <button class="btn btn-primary" type="submit">Send query</button>
+            <button id="submitBtn" class="btn btn-primary" type="submit">Send query</button>
+            <span id="status" class="note" aria-live="polite"></span>
           </div>
         </form>
       </div>
@@ -155,6 +152,38 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Submit via fetch, then redirect to thanks.html on success
+    const form = document.getElementById('query-form');
+    const submitBtn = document.getElementById('submitBtn');
+    const status = document.getElementById('status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = '';
+      submitBtn.disabled = true;
+
+      const redirectURL = new URL('thanks.html', window.location.href).href;
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+
+        if (res.ok) {
+          window.location.assign(redirectURL);
+        } else {
+          status.textContent = 'Something went wrong. Please try again.';
+          submitBtn.disabled = false;
+        }
+      } catch (err) {
+        status.textContent = 'Network error. Please check your connection and try again.';
+        submitBtn.disabled = false;
+      }
+    });
   </script>
 </body>
 </html>
